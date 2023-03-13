@@ -1,0 +1,44 @@
+Aplica validaciones a un FormControl
+
+> component.ts
+
+      // Un FormControl tiene por defecto 3 parametros de entrada
+      // 1-Valor por defecto
+      // 2-Validaciones Sincronas, pueden ser varias validaciones dentro de un array
+      // 3-Validaciones Asincronas
+
+      nameField = new FormControl(defecto, sync, async);
+
+> component.html
+
+      <p>
+        Name: {{ nameField.value }} {{ nameField.valid }}
+        <input type="text" [formControl]="nameField"/>
+        <button [disabled]="nameField.invalid" (click)="getNameValue()">Get Value</button>
+        <!-- <code>
+          <pre>
+            {{ nameField | json}}
+          </pre>
+        </code> -->
+      </p>
+
+      <p>
+        <strong *ngIf="nameField.touched && nameField.hasError('required')">Este campo es requerido</strong>
+      </p>
+
+      <p>
+        <strong *ngIf="nameField.hasError('maxlength')">Maximo 10 caracteres</strong>
+      </p>
+
+
+
+
+Para mostrar errores angular material nos provee de la etiqueta mat-error.
+
+      <div>
+          <mat-form-field>
+              <input matInput placeholder="Ingresa tu nombre aqui" [formControl]="nameField" required>
+              <mat-error *ngIf="nameField.hasError('required')">Este campo es requerido</mat-error>
+          </mat-form-field>
+          <button mat-raised-button color="primary" [disabled]="nameField.invalid" (click)="getNameValue()">Get value</button>
+      </div>

@@ -1,0 +1,18 @@
+Manejo y binding de selects y selects múltiples
+
+Tambien podemos combinar el atributo multiple que menciona Nico con el atributo “size”, para cuando quieren ver mas de 4 elementos en el multiple o quieren ver mas de 1 en el normal, tal vez a alguien le pueda servir. Seria algo así:
+
+ <select name="casas" id="casas" multiple size="8" >
+    <option value="casa-1">casa-1</option>
+    <option value="casa-2">casa-2</option>
+    <option value="casa-3">casa-3</option>
+    <option value="casa-4">casa-4</option>
+    <option value="casa-5">casa-5</option>
+    <option value="casa-6">casa-6</option>
+    <option value="casa-7">casa-7</option>
+    <option value="casa-8">casa-8</option>
+    <option value="casa-9">casa-9</option>
+    <option value="casa-10">casa-10</option>
+    <option value="casa-11">casa-11</option>
+    <option value="casa-12">casa-12</option>
+  </select>```

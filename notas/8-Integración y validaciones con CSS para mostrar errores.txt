@@ -1,0 +1,65 @@
+Integración y validaciones con CSS para mostrar errores
+
+> component.ts
+
+            export class BasicFormComponent {
+                nameField = new FormControl('', 
+                    [Validators.required, Validators.maxLength(10)]);
+
+                get isNameFieldValid() {
+                    return this.nameField.touched && this.nameField.valid;
+                }
+
+                get isNameFieldInvalid() {
+                    return this.nameField.touched && this.nameField.invalid;
+                }
+            }
+
+
+> component.html
+
+            <p>
+            <!-- para ver el estado valido: .valid para ver el estado invalido: .invalid -->
+            Name: {{ nameField.value }} {{ nameField.valid }}
+            <input
+                [class.is-valid]="isNameFieldValid"
+                [class.is-invalid]="isNameFieldInvalid"
+                type="text"
+                [formControl]="nameField"/>
+            <button [disabled]="nameField.invalid" (click)="getNameValue()">Get Value</button>
+            <!-- <code>
+                <pre>
+                {{ nameField | json}}
+                </pre>
+            </code> -->
+            </p>
+
+            <div class="messages" [class.active]="isNameFieldInvalid">
+            <p>
+                <mat-error *ngIf="nameField.touched && nameField.hasError('required')">Este campo es requerido</mat-error>
+            </p>
+
+            <p>
+                <!-- <mat-error *ngIf="nameField.hasError('maxlength')">Maximo 10 caracteres</mat-error> -->
+                <strong style="color: blue;" *ngIf="nameField.hasError('maxlength')">Maximo 10 caracteres</strong>
+            </p>
+            </div>
+
+> component.CSS
+
+      input {
+        &.is-valid {
+          border: 2px solid green;
+        }
+        &.is-invalid {
+          border: 2px solid red;
+        }
+      }
+
+      .messages {
+        opacity: 0;
+        transition: all .7s ease-in;
+        &.active {
+          opacity: 1;
+        }
+      }

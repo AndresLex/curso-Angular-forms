@@ -1,0 +1,50 @@
+Dominando el FormControl y sus estados
+
+FormControl
+Es la pieza atómica de un formulario reactivo
+
+// Crear un form control
+nameField = new FormControl('soy un control');
+
+// Enlazar el form cotrol con el template
+<input type="text" [formControl]="nameField"/>
+
+// Obtener el valor
+{{nameField.value}}
+
+// Obtener un observable del valor
+this.nameField.valueChanges
+
+// Obtener el objeto value
+<code>
+	<pre> {{ nameField | json}} <pre>
+</code>
+
+
+
+valueChanges
+
+El método valueChanges es una función que se puede usar con formularios reactivos en Angular para monitorear los cambios en los valores de los campos de un formulario. Este método devuelve un Observable que puede ser suscripto para recibir actualizaciones cada vez que el valor de un campo cambia.
+
+            import { FormGroup, FormControl } from '@angular/forms';
+            import { Observable } from 'rxjs';
+
+            export class MyForm {
+            form = new FormGroup({
+                name: new FormControl(''),
+                email: new FormControl(''),
+            });
+
+            nameChanges: Observable<string>;
+
+            ngOnInit() {
+                this.nameChanges = this.form.get('name').valueChanges;
+                this.nameChanges.subscribe(name => {
+                console.log(`Name changed to: ${name}`);
+                });
+            }
+            }
+
+En este ejemplo, se crea una clase FormGroup con dos campos, name y email. Luego, se usa el método valueChanges en el campo name para obtener un Observable que emite valores cada vez que el valor de name cambia. Finalmente, se suscribe a este Observable para recibir actualizaciones y mostrar un mensaje en la consola cada vez que el valor de name cambia.
+
+El método valueChanges es útil para realizar tareas específicas cada vez que el valor de un campo cambia, como actualizar un componente dependiente o realizar una llamada a una API para obtener datos adicionales. Además, el método valueChanges es una forma sencilla de monitorear los cambios en los valores de los campos de un formulario reactivo en Angular.

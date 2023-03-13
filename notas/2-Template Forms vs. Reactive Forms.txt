@@ -1,0 +1,15 @@
+Template Forms vs. Reactive Forms
+
+Template Forms
+
+Son formularios controlados por modelo
+El modelo basado en plantillas
+Angular crea modelos como FormGroups y FormControls
+Directivas de Angular NgForm y NgModel
+
+Reactive Forms
+*Mucho mas potentes y mejor rendimiento
+
+Basados en observable
+Mejora el tipo de Validación de los datos
+Se usa para Formularios complejos

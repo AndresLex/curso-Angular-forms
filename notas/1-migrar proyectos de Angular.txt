@@ -1,0 +1,43 @@
+Para quienes quieren correr el proyecto sin necesidad de migrarlo a la ultima versión de Angular cli y node, deben de clonar la rama init del repositorio, luego instalan de forma local la versión de angular que tenga el proyecto y por ultimo usar la versión 14 de node.js, asi serian los pasos:
+
+Descargar el repo en la grama init
+Ubicarse en consola dentro del proyecto
+Instalar de forma local la version de angular del proyecto:
+npm install -D @angular/cli
+4)Instalar la herramienta Node Version Manager:
+
+Repositorio de Node Version Manager
+
+5)Instalar node 14 con la herramienta Node Version Manager
+
+nvm install 14
+6)Correr el proyecto
+
+ng serve
+Lo intente con la rama init para seguir paso a paso el curso, si desean pueden probar con la rama master
+
+
+Uso
+Para descargar, compilar e instalar la última versión de node, haga lo siguiente:
+
+nvm install node # "node" is an alias for the latest version
+Para instalar una versión específica del nodo:
+
+nvm install 14.7.0 # or 16.3.0, 12.22.1, etc
+La primera versión instalada se convierte en la predeterminada. Los nuevos shells comenzarán con la versión predeterminada del nodo (p. ej., nvm alias default).
+
+Puede listar las versiones disponibles usando ls-remote:
+
+nvm ls-remote
+Y luego, en cualquier shell nuevo, solo use la versión instalada:
+
+nvm use node
+O simplemente puede ejecutarlo:
+
+nvm run node --version
+O bien, puede ejecutar cualquier comando arbitrario en una subcapa con la versión deseada del nodo:
+
+nvm exec 4.2 node --version
+También puede obtener la ruta al ejecutable donde se instaló:
+
+nvm which 12.22
